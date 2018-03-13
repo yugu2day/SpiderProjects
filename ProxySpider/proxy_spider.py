@@ -5,11 +5,13 @@
 将可用IP地址保存到csv文件中
 """
 import csv
-from time import sleep
+from random import randint
 from multiprocessing import Pool
 
 import requests
 import lxml.html
+import time
+from urllib3.exceptions import ReadTimeoutError
 
 TARGET_URL = "http://www.xicidaili.com/nt/"
 FILE_NAME = r"proxy_ip.csv"
@@ -35,7 +37,7 @@ def getProxyList(target_url=TARGET_URL, pages='1'):
     :param target_url: 爬取的代理IP网址
     :return:
     """
-    proxyFile = open(FILE_NAME, "w+", newline="")
+    proxyFile = open(FILE_NAME, "a+", newline="")
     writer = csv.writer(proxyFile)
 
     r = requests.get(target_url + pages, headers=headers, timeout=2.5)
@@ -47,36 +49,44 @@ def getProxyList(target_url=TARGET_URL, pages='1'):
         proxy_ip = tds[1].text_content()
         proxy_port = tds[2].text_content()
         proxy_addr = tds[3].text_content().strip()
-        writer.writerow([proxy_ip, proxy_port, proxy_addr])
+        proxy_type = tds[5].text_content()
+        writer.writerow([proxy_type, proxy_ip, proxy_port, proxy_addr])
 
     proxyFile.close()
 
 
-def verifyProxy(verify_url, proxies, session):
+def verifyProxy(verify_url, proxies):
     headers = {
         'accept': "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
         'user-agent': "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36",
     }
-    r = session.get(verify_url, headers=headers, proxies=proxies, timeout=5.0)
-    if r.status_code == 200:
-        print(proxies['http'] + " verified")
-    else:
-        print(proxies['http'] + " failed")
-
+    try:
+        r = requests.get(verify_url, headers=headers, proxies=proxies, timeout=10.0)
+        if r.status_code == 200:
+            print(str(proxies) + " verified")
+        else:
+            print(str(proxies) + " failed" + r.status_code)
+    except:
+        print(str(proxies) + " failed")
 
 def verifyProxies(verify_url="http://www.baidu.com", file_path=FILE_NAME):
-    session = requests.session()
     proxyFile = open(FILE_NAME, "r+")
     csv_reader = csv.reader(proxyFile)
     p = Pool(10)
     for row in csv_reader:
-        proxies = {"http": "http://" + row[0] + ":" + row[1]}
-        p.apply_async(verifyProxy, args=(verify_url, proxies, session))
+        if row[0] == 'HTTP':
+            proxies = {"http": "http://" + row[1] + ":" + row[2]}
+        elif row[0] == 'HTTPS':
+            proxies = {"https": "https://" + row[1] + ":" + row[2]}
+        p.apply_async(verifyProxy, args=(verify_url, proxies))
+        time.sleep(randint(1, 3))
     p.close()
     p.join()
     proxyFile.close()
 
 
 if __name__ == "__main__":
-    # getProxyList()
+    # for i in range(5, 10):
+    #     getProxyList(pages=str(i))
     verifyProxies()
+#
