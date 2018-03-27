@@ -8,7 +8,6 @@
 import scrapy
 
 
-<<<<<<< HEAD
 class UserItem(scrapy.Item):
     uid = scrapy.Field()
     name = scrapy.Field()  # 昵称
@@ -18,12 +17,6 @@ class UserItem(scrapy.Item):
     intro = scrapy.Field()  # 个人介绍
     follows = scrapy.Field()  # 关注数
     followers = scrapy.Field()  # 粉丝数
-=======
-class DoubancrawlerItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
->>>>>>> acd15b0cb4b7c885d2b458721b5acb17c6951847
 
 
 class BookItem(scrapy.Item):

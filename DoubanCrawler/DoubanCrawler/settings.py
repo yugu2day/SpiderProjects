@@ -14,29 +14,22 @@ BOT_NAME = 'DoubanCrawler'
 SPIDER_MODULES = ['DoubanCrawler.spiders']
 NEWSPIDER_MODULE = 'DoubanCrawler.spiders'
 
-<<<<<<< HEAD
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = 'DoubanCrawler (+http://www.yourdomain.com)'
-=======
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'DoubanCrawler (+http://www.yourdomain.com)'
->>>>>>> acd15b0cb4b7c885d2b458721b5acb17c6951847
+# USER_AGENT = 'DoubanCrawler (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 # ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-<<<<<<< HEAD
 # CONCURRENT_REQUESTS = 32
-=======
-#CONCURRENT_REQUESTS = 32
->>>>>>> acd15b0cb4b7c885d2b458721b5acb17c6951847
+# CONCURRENT_REQUESTS = 32
 
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-<<<<<<< HEAD
 DOWNLOAD_DELAY = 6
 # The download delay setting will honor only one of:
 CONCURRENT_REQUESTS_PER_DOMAIN = 2
@@ -47,24 +40,21 @@ CONCURRENT_REQUESTS_PER_DOMAIN = 2
 
 # Disable Telnet Console (enabled by default)
 # TELNETCONSOLE_ENABLED = False
-=======
 DOWNLOAD_DELAY = 5
 # The download delay setting will honor only one of:
-#CONCURRENT_REQUESTS_PER_DOMAIN = 16
-#CONCURRENT_REQUESTS_PER_IP = 16
+# CONCURRENT_REQUESTS_PER_DOMAIN = 16
+# CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-#COOKIES_ENABLED = False
+# COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
-#TELNETCONSOLE_ENABLED = False
->>>>>>> acd15b0cb4b7c885d2b458721b5acb17c6951847
+# TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
 DEFAULT_REQUEST_HEADERS = {
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     'Accept-Language': 'en',
-<<<<<<< HEAD
     'Upgrade-Insecure-Requests': '1',
     'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36',
 }
@@ -75,62 +65,50 @@ DOWNLOADER_MIDDLEWARES = {
     'DoubanCrawler.middlewares.RandomUserAgentMiddleware': 300,
     # 'DoubanCrawler.middlewares.ProxyMiddleware': 300,
 }
-=======
-    'Referer': 'https://book.douban.com/',
-    'Upgrade-Insecure-Requests': 1,
-    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36',
-}
 
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
+# SPIDER_MIDDLEWARES = {
 #    'DoubanCrawler.middlewares.DoubancrawlerSpiderMiddleware': 543,
-#}
+# }
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
+# DOWNLOADER_MIDDLEWARES = {
 #    'DoubanCrawler.middlewares.MyCustomDownloaderMiddleware': 543,
-#}
+# }
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
-#EXTENSIONS = {
+# EXTENSIONS = {
 #    'scrapy.extensions.telnet.TelnetConsole': None,
-#}
->>>>>>> acd15b0cb4b7c885d2b458721b5acb17c6951847
+# }
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-<<<<<<< HEAD
     'DoubanCrawler.pipelines.BookPipeline': 300,
     'DoubanCrawler.pipelines.UserPipeline': 300,
 }
 
 
-=======
-   'DoubanCrawler.pipelines.BookPipeline': 300,
-}
-
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
-#AUTOTHROTTLE_ENABLED = True
+# AUTOTHROTTLE_ENABLED = True
 # The initial download delay
-#AUTOTHROTTLE_START_DELAY = 5
+# AUTOTHROTTLE_START_DELAY = 5
 # The maximum download delay to be set in case of high latencies
-#AUTOTHROTTLE_MAX_DELAY = 60
+# AUTOTHROTTLE_MAX_DELAY = 60
 # The average number of requests Scrapy should be sending in parallel to
 # each remote server
-#AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
+# AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
 # Enable showing throttling stats for every response received:
-#AUTOTHROTTLE_DEBUG = False
+# AUTOTHROTTLE_DEBUG = False
 
 # Enable and configure HTTP caching (disabled by default)
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
-#HTTPCACHE_ENABLED = True
-#HTTPCACHE_EXPIRATION_SECS = 0
-#HTTPCACHE_DIR = 'httpcache'
-#HTTPCACHE_IGNORE_HTTP_CODES = []
-#HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
->>>>>>> acd15b0cb4b7c885d2b458721b5acb17c6951847
+# HTTPCACHE_ENABLED = True
+# HTTPCACHE_EXPIRATION_SECS = 0
+# HTTPCACHE_DIR = 'httpcache'
+# HTTPCACHE_IGNORE_HTTP_CODES = []
+# HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
